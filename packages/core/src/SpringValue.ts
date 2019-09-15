@@ -384,7 +384,7 @@ export class SpringValue<T = any, P extends string = string>
     }
     // When our parent is not a spring, it won't tell us to enter the frameloop
     // because it never does so itself. Instead, we must react to value changes.
-    else if (!this.is(ACTIVE) && !isEqual(value, this.get())) {
+    else if (this.idle && !isEqual(value, this.get())) {
       this._start()
     }
   }
